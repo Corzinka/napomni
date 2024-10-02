@@ -1,0 +1,36 @@
+<div *ngIf="reminder">
+    <form>
+      <!-- Первая строка -->
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="dateCreation">Дата и время создания</label>
+          <input type="text" class="form-control" id="dateCreation" [value]="reminder.date_creation | date: 'short'" readonly>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="dateComplite">Дата и время выполнения</label>
+          <input type="text" class="form-control" id="dateComplite" [value]="reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана'" readonly>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="status">Статус</label>
+          <input type="text" class="form-control" id="status" [value]="reminder.status.name" readonly>
+        </div>
+      </div>
+  
+      <!-- Вторая строка -->
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="description">Краткое описание</label>
+          <input type="text" class="form-control" id="description" [value]="reminder.description" readonly>
+        </div>
+      </div>
+  
+      <!-- Полное описание -->
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="fullDescription">Полное описание</label>
+          <textarea class="form-control" id="fullDescription" rows="4" [(ngModel)]="reminder.full_description" name="fullDescription"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  

@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let reminder of reminders">
+      <tr *ngFor="let reminder of reminders" (dblclick)="onRowDoubleClick(reminder.id_remind)">
         <td>{{ reminder.status.name }}</td>
         <td>{{ reminder.description }}</td>
         <td>{{ reminder.date_creation | date: 'short' }}</td>
