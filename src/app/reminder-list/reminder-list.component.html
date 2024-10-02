@@ -1,0 +1,19 @@
+<table>
+    <thead>
+      <tr>
+        <th>Статус</th>
+        <th>Краткое описание</th>
+        <th>Дата и время создания</th>
+        <th>Дата и время выполнения</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reminder of reminders">
+        <td>{{ reminder.status.name }}</td>
+        <td>{{ reminder.description }}</td>
+        <td>{{ reminder.date_creation | date: 'short' }}</td>
+        <td>{{ reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
