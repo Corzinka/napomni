@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; // Добавьте этот импорт
+import { MatInputModule } from '@angular/material/input'; // Для текстовых полей
+import { MatButtonModule } from '@angular/material/button'; // Для кнопок
+import { MatCardModule } from '@angular/material/card'; // Для карточек
+import { MatFormFieldModule } from '@angular/material/form-field'; // Для обертки текстовых полей
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReminderListComponent } from './reminder-list/reminder-list.component';
 import { ReminderFormComponent } from './reminder-form/reminder-form.component';
+
 
 @NgModule({
   declarations: [
@@ -17,9 +24,15 @@ import { ReminderFormComponent } from './reminder-form/reminder-form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

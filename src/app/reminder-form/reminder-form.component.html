@@ -1,36 +1,49 @@
-<div *ngIf="reminder">
+<mat-card class="form-container" *ngIf="reminder">
+  <mat-card-header>
+    <h2>Форма Напоминания</h2>
+  </mat-card-header>
+
+  <mat-card-content>
     <form>
-      <!-- Первая строка -->
       <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="dateCreation">Дата и время создания</label>
-          <input type="text" class="form-control" id="dateCreation" [value]="reminder.date_creation | date: 'short'" readonly>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="dateComplite">Дата и время выполнения</label>
-          <input type="text" class="form-control" id="dateComplite" [value]="reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана'" readonly>
-        </div>
-        <div class="form-group col-md-4">
-          <label for="status">Статус</label>
-          <input type="text" class="form-control" id="status" [value]="reminder.status.name" readonly>
-        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Дата и время создания</mat-label>
+          <input matInput [value]="reminder.date_creation | date: 'short'" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Дата и время выполнения</mat-label>
+          <input matInput [value]="reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана'" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Статус</mat-label>
+          <input matInput [value]="reminder.status.name" readonly>
+        </mat-form-field>
       </div>
-  
-      <!-- Вторая строка -->
+
       <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="description">Краткое описание</label>
-          <input type="text" class="form-control" id="description" [value]="reminder.description" readonly>
-        </div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Краткое описание</mat-label>
+          <input matInput [value]="reminder.description" readonly>
+        </mat-form-field>
       </div>
-  
-      <!-- Полное описание -->
+
       <div class="form-row">
-        <div class="form-group col-md-12">
-          <label for="fullDescription">Полное описание</label>
-          <textarea class="form-control" id="fullDescription" rows="4" [(ngModel)]="reminder.full_description" name="fullDescription"></textarea>
-        </div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Полное описание</mat-label>
+          <textarea matInput [(ngModel)]="reminder.full_description" name="fullDescription" rows="4"></textarea>
+        </mat-form-field>
       </div>
+
+      <!-- Кнопка "Назад" -->
+      <button mat-raised-button color="primary" (click)="goBack()">Назад</button>
     </form>
-  </div>
-  
+  </mat-card-content>
+</mat-card>
+
+<!-- Отображение сообщения, если напоминание не найдено -->
+<div *ngIf="!reminder" class="no-reminder">
+  <p>Напоминание не найдено.</p>
+  <button mat-raised-button color="primary" (click)="goBack()">Назад к списку</button>
+</div>
