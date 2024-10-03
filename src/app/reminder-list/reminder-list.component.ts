@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // импортируем Router для навигации
+import { Router } from '@angular/router';
+
 import { ReminderService } from '../reminder.service';
 import { Reminder } from '../models/reminder.model';
 
@@ -19,8 +20,7 @@ export class ReminderListComponent implements OnInit {
     });
   }
 
-  // Метод для обработки двойного клика
   onRowDoubleClick(reminderId: number): void {
-    this.router.navigate(['/reminders', reminderId]); // перенаправляем на форму напоминания
+    this.router.navigate(['/reminders', reminderId]);
   }
 }

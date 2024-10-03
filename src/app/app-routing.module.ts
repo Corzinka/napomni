@@ -6,8 +6,7 @@ import { ReminderFormComponent } from './reminder-form/reminder-form.component';
 const routes: Routes = [
   { path: '', redirectTo: '/reminders', pathMatch: 'full' },
   { path: 'reminders', component: ReminderListComponent },
-  { path: 'reminders/:id', component: ReminderFormComponent }, // маршрут для формы напоминания
-
+  { path: 'reminders/:id', component: ReminderFormComponent }
 ];
 
 @NgModule({

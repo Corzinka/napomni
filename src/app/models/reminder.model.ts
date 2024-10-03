@@ -7,6 +7,6 @@ export class Reminder {
     public full_description: string,
     public date_creation: Date,
     public date_complite: Date | null,
-    public status: Status // Теперь статус строго типизирован
+    public status: Status
   ) {}
 }

@@ -1,15 +1,13 @@
 .form-container {
-    max-width: 800px; /* Максимальная ширина формы */
-    margin: 20px auto; /* Центрирование формы на странице */
+    max-width: 800px;
+    margin: 20px auto;
   }
   
-  /* Обеспечим, чтобы поля формы занимали всю ширину */
   .full-width {
     width: 100%;
   }
   
-  /* Увеличиваем пространство между строками формы */
   .form-row {
-    margin-bottom: 15px; /* Отступы между строками */
+    margin-bottom: 15px;
   }
   
