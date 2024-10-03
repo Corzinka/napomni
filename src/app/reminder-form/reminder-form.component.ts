@@ -9,7 +9,8 @@ import { Reminder } from '../models/reminder.model';
   styleUrls: ['./reminder-form.component.css']
 })
 export class ReminderFormComponent implements OnInit {
-  reminder: Reminder | null = null; // Инициализация reminder как null
+  reminder: Reminder | null = null;
+  statuses: string[] = ['Новый', 'Запланированный', 'Исполнен', 'Просрочен'];
 
   constructor(
     private route: ActivatedRoute,
@@ -18,10 +19,18 @@ export class ReminderFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id')); // получаем id из URL
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.reminderService.getReminders().subscribe((reminders: Reminder[]) => {
-      this.reminder = reminders.find((r) => r.id_remind === id) || null; // Используем null в случае отсутствия
+      this.reminder = reminders.find((r) => r.id_remind === id) || null;
     });
+  }
+
+  saveReminder(): void {
+    if (this.reminder) {
+      this.reminderService.updateReminder(this.reminder).subscribe(() => {
+        this.router.navigate(['/reminders']);
+      });
+    }
   }
 
   goBack(): void {

@@ -1,31 +1,38 @@
 <mat-card class="form-container" *ngIf="reminder">
   <mat-card-header>
-    <h2>Форма Напоминания</h2>
+    <h2>Редактировать Напоминание</h2>
   </mat-card-header>
 
   <mat-card-content>
     <form>
+      <!-- Поля формы -->
       <div class="form-row">
         <mat-form-field appearance="fill">
-          <mat-label>Дата и время создания</mat-label>
-          <input matInput [value]="reminder.date_creation | date: 'short'" readonly>
+          <mat-label>Дата создания</mat-label>
+          <input matInput [matDatepicker]="pickerCreation" [(ngModel)]="reminder.date_creation" name="dateCreation">
+          <mat-datepicker-toggle matSuffix [for]="pickerCreation"></mat-datepicker-toggle>
+          <mat-datepicker #pickerCreation></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Дата и время выполнения</mat-label>
-          <input matInput [value]="reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана'" readonly>
+          <mat-label>Дата выполнения</mat-label>
+          <input matInput [matDatepicker]="pickerComplite" [(ngModel)]="reminder.date_complite" name="dateComplite">
+          <mat-datepicker-toggle matSuffix [for]="pickerComplite"></mat-datepicker-toggle>
+          <mat-datepicker #pickerComplite></mat-datepicker>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Статус</mat-label>
-          <input matInput [value]="reminder.status.name" readonly>
+          <mat-select [(ngModel)]="reminder.status.name" name="status">
+            <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 
       <div class="form-row">
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Краткое описание</mat-label>
-          <input matInput [value]="reminder.description" readonly>
+          <input matInput [(ngModel)]="reminder.description" name="description">
         </mat-form-field>
       </div>
 
@@ -36,14 +43,15 @@
         </mat-form-field>
       </div>
 
-      <!-- Кнопка "Назад" -->
-      <button mat-raised-button color="primary" (click)="goBack()">Назад</button>
+      <!-- Кнопки -->
+      <button mat-raised-button color="primary" (click)="saveReminder()">Сохранить</button>
+      <button mat-raised-button color="warn" (click)="goBack()">Назад</button>
     </form>
   </mat-card-content>
 </mat-card>
 
 <!-- Отображение сообщения, если напоминание не найдено -->
-<div *ngIf="!reminder" class="no-reminder">
+<div *ngIf="!reminder">
   <p>Напоминание не найдено.</p>
   <button mat-raised-button color="primary" (click)="goBack()">Назад к списку</button>
 </div>

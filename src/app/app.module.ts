@@ -8,6 +8,10 @@ import { MatCardModule } from '@angular/material/card'; // Для карточе
 import { MatFormFieldModule } from '@angular/material/form-field'; // Для обертки текстовых полей
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';  // Для выбора даты
+import { MatNativeDateModule } from '@angular/material/core';  // Для использования формата дат
+import { MatSelectModule } from '@angular/material/select';  // Для выпадающего списка
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReminderListComponent } from './reminder-list/reminder-list.component';
@@ -29,6 +33,9 @@ import { ReminderFormComponent } from './reminder-form/reminder-form.component';
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [
     provideAnimationsAsync()

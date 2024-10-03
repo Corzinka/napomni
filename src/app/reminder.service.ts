@@ -30,4 +30,8 @@ export class ReminderService {
       )
     );
   }
+
+  updateReminder(reminder: Reminder): Observable<Reminder> {
+    return this.http.put<Reminder>(`${this.apiUrl}/${reminder.id_remind}`, reminder);
+  }
 }
