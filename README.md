@@ -10,9 +10,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Можно подключть бд. 
 Для этого нужно раскоментировать некоторые строки в 
-  remind-list.component.ts
-  remind-list.component.html
-  remind-form.component.ts
-  remind-form.component.html
+- remind-list.component.ts
+- remind-list.component.html
+- remind-form.component.ts
+- remind-form.component.html
 
 и запустить server.js (ну и внутри него имя и пароль поменять)
