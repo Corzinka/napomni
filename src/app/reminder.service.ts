@@ -32,6 +32,14 @@ export class ReminderService {
   }
 
   updateReminder(reminder: Reminder): Observable<Reminder> {
-    return this.http.put<Reminder>(`${this.apiUrl}/${reminder.id_remind}`, reminder);
+    const reminderPayload = {
+      description: reminder.description,
+      full_description: reminder.full_description,
+      date_creation: reminder.date_creation.toISOString(),
+      date_complite: reminder.date_complite ? reminder.date_complite.toISOString() : null,
+      status: reminder.status.name
+    };
+
+    return this.http.put<Reminder>(`${this.apiUrl}/${reminder.id_remind}`, reminderPayload);
   }
 }
