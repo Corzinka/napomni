@@ -6,11 +6,12 @@ import { ReminderFormComponent } from './reminder-form/reminder-form.component';
 const routes: Routes = [
   { path: '', redirectTo: '/reminders', pathMatch: 'full' },
   { path: 'reminders', component: ReminderListComponent },
-  { path: 'reminders/:id', component: ReminderFormComponent }
+  { path: 'reminders/:id', component: ReminderFormComponent },
+  { path: 'reminder-form', component: ReminderFormComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
