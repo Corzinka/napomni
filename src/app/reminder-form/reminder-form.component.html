@@ -7,21 +7,21 @@
     <form>
       <!-- Поля формы -->
       <div class="form-row">
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
           <mat-label>Дата создания</mat-label>
           <input matInput [matDatepicker]="pickerCreation" [(ngModel)]="reminder.date_creation" name="dateCreation">
           <mat-datepicker-toggle matSuffix [for]="pickerCreation"></mat-datepicker-toggle>
           <mat-datepicker #pickerCreation></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
           <mat-label>Дата выполнения</mat-label>
           <input matInput [matDatepicker]="pickerComplite" [(ngModel)]="reminder.date_complite" name="dateComplite">
           <mat-datepicker-toggle matSuffix [for]="pickerComplite"></mat-datepicker-toggle>
           <mat-datepicker #pickerComplite></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" class="full-width">
           <mat-label>Статус</mat-label>
           <mat-select [(ngModel)]="reminder.status.name" name="status">
             <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
@@ -44,14 +44,16 @@
       </div>
 
       <!-- Кнопки -->
-      <button mat-raised-button color="primary" (click)="saveReminder()">Сохранить</button>
-      <button mat-raised-button color="warn" (click)="goBack()">Назад</button>
+      <div class="form-row">
+        <button mat-raised-button color="primary" (click)="saveReminder()">Сохранить</button>
+        <button mat-raised-button color="warn" (click)="goBack()">Назад</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>
 
 <!-- Отображение сообщения, если напоминание не найдено -->
-<div *ngIf="!reminder">
+<div *ngIf="!reminder" class="form-container">
   <p>Напоминание не найдено.</p>
   <button mat-raised-button color="primary" (click)="goBack()">Назад к списку</button>
 </div>
