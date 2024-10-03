@@ -1,21 +1,11 @@
-.container {
-    margin-top: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #c98484;
-  }
-  
-  td {
-    border: 1px solid #ff0000;
-  }
+table {
+  width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 16px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}

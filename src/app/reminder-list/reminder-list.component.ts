@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'; 
 
 import { ReminderService } from '../reminder.service';
 import { Reminder } from '../models/reminder.model';
@@ -11,6 +11,7 @@ import { Reminder } from '../models/reminder.model';
 })
 export class ReminderListComponent implements OnInit {
   reminders: Reminder[] = [];
+  displayedColumns: string[] = ['status', 'description', 'date_creation', 'date_complite'];
 
   constructor(private reminderService: ReminderService, private router: Router) {}
 

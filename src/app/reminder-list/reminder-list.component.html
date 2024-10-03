@@ -1,19 +1,27 @@
-<table>
-    <thead>
-      <tr>
-        <th>Статус</th>
-        <th>Краткое описание</th>
-        <th>Дата и время создания</th>
-        <th>Дата и время выполнения</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let reminder of reminders" (dblclick)="onRowDoubleClick(reminder.id_remind)">
-        <td>{{ reminder.status.name }}</td>
-        <td>{{ reminder.description }}</td>
-        <td>{{ reminder.date_creation | date: 'short' }}</td>
-        <td>{{ reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана' }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+<table mat-table [dataSource]="reminders" class="mat-elevation-z8">
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Статус </th>
+    <td mat-cell *matCellDef="let reminder"> {{ reminder.status.name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef> Краткое описание </th>
+    <td mat-cell *matCellDef="let reminder"> {{ reminder.description }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date_creation">
+    <th mat-header-cell *matHeaderCellDef> Дата и время создания </th>
+    <td mat-cell *matCellDef="let reminder"> {{ reminder.date_creation | date: 'short' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="date_complite">
+    <th mat-header-cell *matHeaderCellDef> Дата и время выполнения </th>
+    <td mat-cell *matCellDef="let reminder">
+      {{ reminder.date_complite ? (reminder.date_complite | date: 'short') : 'Дата не указана' }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let reminder; columns: displayedColumns;" (dblclick)="onRowDoubleClick(reminder.id_remind)">
+  </tr>
+</table>
